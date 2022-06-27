@@ -1,10 +1,19 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { CardsModule } from './cards/cards.module';
+import { ProfilesController } from './profiles/profiles.controller';
+import { ProfilesService } from './profiles/profiles.service';
+import { ProfilesModule } from './profiles/profiles.module';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost/5000'),
+    CardsModule, 
+    ProfilesModule
+  ],
+  controllers: [AppController, ProfilesController],
+  providers: [AppService, ProfilesService],
 })
 export class AppModule {}
