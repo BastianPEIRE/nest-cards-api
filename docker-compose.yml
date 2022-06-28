@@ -1,16 +1,10 @@
-version: '3.8'
-
+version: '3.3'
 services:
-  api: 
-    container_name: api
-    dockerfile: dockerfile
-    depends_on:
-      - mongo
-    ports:
-      - "5000:80"
   mongo:
-    image: mongo
+    image : mongo:latest
+    container_name: mongo
+    volumes:
+      - ./database:/data/db
+    ports:
+      - 27017:27017
     restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
