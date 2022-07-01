@@ -19,4 +19,4 @@ export class Card {
   card: Profile;
 }
 
-export const CatSchema = SchemaFactory.createForClass(Card);
+export const CardSchema = SchemaFactory.createForClass(Card);

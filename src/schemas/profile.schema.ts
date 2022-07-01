@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
-import { Card } from './card.schema';
+import { User } from './user.schema';
 
 export type ProfileDocument = Profile & Document;
 
@@ -21,8 +21,8 @@ export class Profile {
   @Prop({ required: true })
   phoneNumber: string;
 
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Card' }] })
-  card: Card[];
+  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }] })
+  userID: User;
 }
 
-export const CatSchema = SchemaFactory.createForClass(Profile);
+export const ProfileSchema = SchemaFactory.createForClass(Profile);
